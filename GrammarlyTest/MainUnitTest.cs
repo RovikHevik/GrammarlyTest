@@ -23,6 +23,7 @@ namespace GrammarlyTest
             grammarlyLogic = new GrammarlyLogic(PathToGrammarly);
             siteToTest.Add(new SiteModel() { Url = "https://www.onlinetexteditor.net/", Selector = "id:compose" });
             siteToTest.Add(new SiteModel() { Url = "https://translate.google.com/?sl=en&tl=ru&op=translate", Selector = "class:er8xn" });
+            siteToTest.Add(new SiteModel() { Url = "https://www.m-translate.ru/translator/text#", Selector = "id:text" });
         }
 
         [Test]
@@ -31,8 +32,8 @@ namespace GrammarlyTest
             browserLogic = new BrowserLogic();
             foreach (var site in siteToTest)
             {
-                Assert.IsTrue(browserLogic.WriteTextToPage(modelToTest,site));
-                Assert.IsTrue(grammarlyLogic.IsValueCorrect(modelToTest));
+                Assert.IsTrue(browserLogic.WriteTextToPage(modelToTest, site), $"Error when try to write text to page {site.Url}");
+                Assert.IsTrue(grammarlyLogic.IsValueCorrect(modelToTest), $"Error when try to detect error in 10sec {site.Url}");
             }
             browserLogic.CloseApp();
         }
