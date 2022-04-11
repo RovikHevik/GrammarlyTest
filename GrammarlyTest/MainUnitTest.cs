@@ -1,5 +1,4 @@
 using GrammarlyTest.Logic;
-using GrammarlyTest.Logic.Interface;
 using GrammarlyTest.Model;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -46,6 +45,5 @@ namespace GrammarlyTest
             Assert.IsTrue(grammarlyLogic.IsValueCorrect(modelToTest));
             wordLogic.CloseApp();
         }
-
     }
 }

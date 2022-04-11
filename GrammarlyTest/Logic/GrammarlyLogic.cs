@@ -15,7 +15,7 @@ namespace GrammarlyTest.Logic
         {
             app = Application.Attach(pathToExe);
         }
-           
+        
         public bool IsValueCorrect(TextModel model)
         {
             using (var automation = new UIA3Automation())
